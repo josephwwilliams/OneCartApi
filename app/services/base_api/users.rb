@@ -12,8 +12,15 @@ module BaseApi
         password: params[:password],
         password_confirmation: params[:password_confirmation]
       )
+
+      account = Account.new(
+        user: user,
+        account_type: params[:account_type]
+      )
+      
       begin
         user.save!
+        account.save!
       rescue ActiveRecord::RecordInvalid => exception
         return ServiceContract.error('Error saving user.') unless user.valid?
       end

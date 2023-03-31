@@ -31,6 +31,7 @@ module Api
         payload = {
           user: UserBlueprint.render_as_hash(result.payload, view: :normal)
         }
+
         #  TODO: Invite user to accept invitation via registered email
         render_success(payload: payload, status: 201)
       end
