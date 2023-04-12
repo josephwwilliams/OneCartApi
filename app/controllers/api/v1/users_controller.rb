@@ -37,7 +37,12 @@ module Api
       end
 
       def me
-        render_success(payload: UserBlueprint.render_as_hash(@current_user), status: 200)
+        payload = {
+          user: UserBlueprint.render_as_hash(@current_user, view: :login),
+          token: TokenBlueprint.render_as_hash(@token),
+          status: 200
+        }
+        render_success(payload: payload)
       end
 
       def validate_invitation

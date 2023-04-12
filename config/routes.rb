@@ -27,6 +27,9 @@ Rails.application.routes.draw do
         get :me
         post :create
       end
+      namespace :products do
+        get :show
+      end
     end
   end
 end
